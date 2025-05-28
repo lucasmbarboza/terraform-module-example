@@ -4,7 +4,7 @@ output "address_full_map" {
     obj.name => {
       description = obj.description
       id          = obj.id
-      ip_address  = obj.ip_address
+      ip_address  = obj.value
     }
   }
 }
