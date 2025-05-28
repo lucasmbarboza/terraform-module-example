@@ -10,8 +10,9 @@ output "address_full_map" {
 }
 
 output "address_full_map_csv" {
-  value = join("\n", [
-    "name,description,id,ip_address,created_at", # Cabeçalho do CSV
+  value = join("\n", concat([
+    "name,description,id,ip_address,created_at" # Cabeçalho do CSV
+  ], [
     for obj in ciscomcd_address_object.address : join(",", [
       obj.name,
       obj.description,
@@ -19,5 +20,5 @@ output "address_full_map_csv" {
       join(";", tolist(obj.value)), # Une IPs (se houver mais de um) com ";"
       timestamp() # Data/hora de criação do output
     ])
-  ])
+  ]))
 }
